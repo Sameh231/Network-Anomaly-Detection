@@ -188,7 +188,20 @@ def attack_details():
 with app.app_context():
     load_data()
 
+
+# Health check endpoint for Render
+@app.route('/api/health')
+def health_check():
+    return jsonify({
+        'status': 'healthy',
+        'service': 'Network Anomaly Detection API',
+        'version': '1.0.0',
+        'timestamp': datetime.now().isoformat()
+    })
+
 if __name__ == '__main__':
+    port = int(os.environ.get('PORT', 5000))
+    app.run(host='0.0.0.0', port=port)
     print("\n" + "=" * 50)
     print("🔥 Network Anomaly Detection API")
     print("   Using REAL NSL-KDD Dataset")
