@@ -1,7 +1,4 @@
-﻿# Network Anomaly Detection - Free Deployment
-# Backend API only (Frontend runs locally)
-
-services:
+﻿services:
   - type: web
     name: network-anomaly-api
     env: python
@@ -11,8 +8,3 @@ services:
     startCommand: gunicorn app:app
     healthCheckPath: /api/health
     autoDeploy: true
-    envVars:
-      - key: PYTHON_VERSION
-        value: 3.9.0
-      - key: FLASK_ENV
-        value: production
