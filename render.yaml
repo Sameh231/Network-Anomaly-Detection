@@ -1,4 +1,4 @@
-﻿services:
+services:
   - type: web
     name: network-anomaly-detection-api
     env: python
@@ -11,14 +11,13 @@
         value: 3.9.0
     healthCheckPath: /api/health
     autoDeploy: true
-    dockerfilePath: ./Dockerfile
 
   - type: web
     name: network-anomaly-detection-frontend
     env: node
     region: oregon
     plan: free
-    buildCommand: cd frontend && npm install
+    buildCommand: cd frontend && npm install && npm run build
     startCommand: cd frontend && npm start
     envVars:
       - key: REACT_APP_API_URL
